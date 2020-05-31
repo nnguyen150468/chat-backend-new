@@ -36,7 +36,15 @@ io.on("connection", async (socket)=>{
         } catch(err){
             console.log(err)
         }
+    })
 
+    socket.on("remindJoinRoom", async() => {
+        socket.emit("message", {
+            user: {
+                name: " "
+            },
+            text: `Please join a room before chatting`
+        })
     })
 
     io.emit("rooms", await Room.find())
