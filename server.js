@@ -30,7 +30,6 @@ io.on("connection", async (socket)=>{
 
             const chat = await server.createChat(chatObj)
 
-            console.log('chat===',chat)
             io.to(server.user.room._id).emit("message", chat)
             
         } catch(err){
@@ -67,7 +66,6 @@ io.on("connection", async (socket)=>{
             await server.joinRoom(rID)
 
             socket.emit("selectedRoom", server.user.room)
-            // console.log('selectedRoom', server.user.room)
 
             socket.join(server.user.room._id)
 
